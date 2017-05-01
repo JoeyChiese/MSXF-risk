@@ -8,3 +8,10 @@
 Tonight i try my best to send your my logistic code, need to sample the data, otherwise my computer can not run,but this will ,
       but this will affect the model effect.so many work we can do ,but my computer didn't work better.
       Now i must go to the wedding scene.
+      
+      
+  2017-05-01 -19:28
+  firstly:about final_xgboost.R ,I modified the parameters;
+  second:about ensemble.rar, i used the train data to build the model for predicting the test, then scores >0.5 mean target=1;
+  then train + test =total.data, we get more data to train the model to predict the test pred3.csv.
+  But the train_error improved a little.

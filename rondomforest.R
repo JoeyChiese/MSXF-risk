@@ -8,6 +8,7 @@ library(corrplot)
 library(e1071)
 library(gdata)
 
+
 setwd("C:/Users/yunbin.jiang/Desktop/data")
 original.train <- read.csv("development_sample.csv") 
 original.test <- read.csv("assessment_sample.csv")
@@ -16,92 +17,91 @@ train <- original.train
 test <- original.test
 
 ##feature engineering
-train <- train[complete.cases(train[,"TARGET"]),] #去掉target中有NA的行
-#run featrue engineering code
+train <- train[complete.cases(train[,"TARGET"]),] #remove the TARGET na ROW
+source("feature engineering.R")
 
-###统一train and test 阈值
-#for (f in names(train)[3:65]) {
- # if (length(names(table(train[,f])))!=length(names(table(test[,f])))) {
- #   levels <- names(table(train[,f]))
- #   test[,f] <- factor(test[,f], levels=levels)
-    
-#  }
-#}
+removeVars <- c("ID2")
+train.data <- train[!colnames(train)%in%removeVars]
+train.test <- test[!colnames(test)%in%removeVars]
 
-train$TARGET <- as.character(train$TARGET)
-train$TARGET <- as.factor(train$TARGET)
 
-#train.data_1 <- na.omit(train.data) 去掉有NA的行
+train.data$TARGET <- as.character(train.data$TARGET)
+train.data$TARGET <- as.factor(train.data$TARGET)
 
-#train_impute <- rfImpute(TARGET~., data = train.data_1)
-#describe(train.data_1)  #data describe
-#sum(is.na(train.data_1))  # sum NA
-#cols <- unlist(sapply(train.data_1,class))
-#unique(cols)
-#fn.fac=names(cols[cols=="factor"])
-#fn.int=names(cols[cols=="integer"])
-
-##抽样
-row_1 <- which(train$TARGET=="1")
-row_0 <- which(train$TARGET=="0")
+#class(train$TARGET)
+##sample data
+row_1 <- which(train.data$TARGET=="1")
+row_0 <- which(train.data$TARGET=="0")
 samp_row <- sample(row_0,length(row_1)*3)
 final.data <- train.data[c(row_1,samp_row),]
 
 
-##
-removeVars <- c("ID2")
-train.data <- train[!colnames(final.data)%in%removeVars]
-train.test <- test[!colnames(test)%in%removeVars]
-cols <- unlist(sapply(final.data,class))
-unique(cols)
-
-fn.fac=names(cols[cols=="factor"])
-fn.int=names(cols[cols=="integer"])
-#fn.num=names(cols[cols=="numeric"])
-#fn.cha=names(cols[cols=="character"])
-class(final.data$TARGET)
-
-#选取随机森林mtry值
-n <- length(names(train.data))
+#choose the best mtry
+n <- length(names(final.data))
 set.seed(1234)
 for (i in 1:(n-1)){
- model <- randomForest(TARGET~., data = train.data, mtry = i)
+ model <- randomForest(TARGET~., data = final.data, mtry = i)
  err <- mean(model$err.rate)
  print(err)
 }
 
-#mtry=8
-#选取ntree值
+#mtry=18 model has the min average error 
+
 set.seed(1234)
-model <- randomForest(TARGET~., data = train.data, mtry = 21, ntree=1000)
+model <- randomForest(TARGET~., data = final.data, mtry = 18, ntree=1000)
 plot(model)
-#ntree=400
+#ntree=400 The error in the model is basically stable, so choose ntree=400
 
 
 set.seed(1234)
-fit <- randomForest(TARGET~., data = train.data,type="classification", mtry = 21, ntree=400, 
+fit <- randomForest(TARGET~., data = final.data,type="classification", mtry = 18, ntree=400, 
                     importance = TRUE,proximity=TRUE)
 print(fit)
 
-#原数据集模型的准确率分析
-pred1 <- predict(object = fit, newdata = train.data)
-Freq1 <- table(pred1,train.data$TARGET)
+#prediction
+pred1 <- predict(object = fit, newdata = final.data)
+Freq1 <- table(pred1,final.data$TARGET)
 Freq1
-options()
+options(scipen = 20)
 sum(diag(Freq1))/sum(Freq1)
-#模型的预测精度在90%以上
+#The prediction precision is above 90% 
 
 
-#变量重要性
+#important vars
 Importance <- importance(x = fit)
 Importance
 varImpPlot(fit)
 
 
-#新数据集的预测情况
+#predict test
 pred2 <- predict(object = fit, newdata = train.test)
-write.csv(data.frame('uid'=final.data[,"ID2"],'score'=pred),file='file/rondonforest.csv',row.names=F)
+write.csv(data.frame('ID2'=final.data[,"ID2"],'score'=pred),file='file/rondonforest.csv',row.names=F)
 
+
+
+# predict probabilities
+pred=predict(model,final.data)
+
+#average error
+err <-mean(as.numeric(pred >0.5) != final.data$TARGET)
+print(paste("train-error=", err))
+
+#KS
+library(ROCR)
+pred1 <- prediction(pred, final.data$TARGET)
+perf <- performance(pred1,"tpr","fpr")
+
+##KS
+max(attr(perf,'y.values')[[1]]-attr(perf,'x.values')[[1]])
+plot(perf)
+
+##AUC
+auc = performance(pred1,"auc")
+auc = unlist(slot(auc, "y.values"))
+
+
+# predict probabilities
+pred=predict(model,train.test)
 
 
 

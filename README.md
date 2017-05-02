@@ -3,7 +3,7 @@
 * EnglishName: Joey.
 * Time: 2 May 2017
 # Abstract
-2017-04-30 -21:28
+2017-04-30 -9:28
 -----------------
 *  Because all my company accounts have been blocked, so i just used my poor computer to run the model, thanks for the xgboost;
  I planned to run the logistic ,rondomforest and xgboost, but randomforest had maked my computer collapsed,<br>

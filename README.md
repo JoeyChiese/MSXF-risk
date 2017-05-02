@@ -21,3 +21,4 @@ but this will affect the model effect.so many work we can do ,but my computer di
 *  second:about ensemble.rar, i used the train data to build the model for predicting the test, then scores >0.5 mean target=1;
  then train + test =total.data, we get more data to train the model to predict the test pred3.csv.<br>
 *  But the train_error improved a little.<br>
+*  if any questions, you can contact me.<br>

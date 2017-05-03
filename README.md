@@ -2,18 +2,7 @@
 * Author: yunbin.jiang'
 * EnglishName: Joey.
 * Time: 2 May 2017
-# Abstract
-2017-04-30 -9:28
------------------
-*  Because all my company accounts have been blocked, so i just used my poor computer to run the model, thanks for the xgboost;
- I planned to run the logistic ,rondomforest and xgboost, but randomforest had maked my computer collapsed,<br>
- so wo give up the LR and RF, RF code i can send to you for your info.the model parameters I did not adjust well,need time to do feature engineering and test the model affect.<br>
-*  This work is very important for me; but this holiday I still have a lot of things to deal with, just like :take my girlfriend to see my parents and my brother got married,i have to be the Bestman because I had promised him two months ago and so on ,so i didn't have plenty time to train my model ,if more time ,i will do it better. <br>
-*  Tonight i try my best to send your my logistic code, need to sample the data, otherwise my computer can not run,but this will ,
-but this will affect the model effect.so many work we can do ,but my computer didn't work better.<br>
-*  Now i must go to the wedding scene.<br>
-      
-      
+# Abstract  
   2017-05-01 -19:28
   model details
   --------------
@@ -22,3 +11,81 @@ but this will affect the model effect.so many work we can do ,but my computer di
  then train + test =total.data, we get more data to train the model to predict the test pred3.csv.<br>
 *  But the train_error improved a little.<br>
 *  if any questions, you can contact me with wechat.<br>
+
+  2017-05-02 -9:56
+  model summary
+  -------------
+ # xgboost version
+ -----------------
+ * 1 Data exploration
+ 1) i found that TARGET row has one NA, so i remove it;
+ 2) the COMPFIELD var has 445 NA ,so i replaced the NA with -1, ohter vars have no NA;
+ * 2 feature engineering
+ 1) there are some different thresholds between train and test, so i made the feature engineering ;
+ 2) because the data have be dealt with cleanly, so i don't discretize it;
+ 
+ * 3 to sparse matrix
+ * 4 xgboost model
+ * 5 model assessment 
+ 1) calculate the train_error=0.018
+ 2) KS = 0.455
+ 3) AUC = 0.80
+ * 6 predict the test data ,then flag the scores>0.5 to 1
+ * 7 Line merge the train and test data , then get the xgboost model result, use it to predict the test data;
+ * 8 
+ 1) calculate the train_error= 0.014
+ 2) KS = 0.56
+ 3) AUC = 0.86
+ * 9 output the test scores
+ * 10 predict the test data ,then flag the scores>0.45 to 1
+ 1) calculate the train_error= 0.0138
+ 2) KS = 0.74
+ 3) AUC = 0.934
+ 
+ # Supplementary explanation
+ * 1 i find DDATE of the test var have exception range :'Feb-05' and 'Jan-05', so the forecast is divided into two predictions: 
+ test01 : have the exception range testdata,
+ test02 : have no the exception range testdata;
+ * 2 the document xgboost01 contain the test01 result, the pred01.csv.
+     the document xgboost02 contain the test02 result, the pred02.csv.
+ * 3 i modified the scores threshold to 0.45, when the score >0.45 TARGET=1, then column merge the train and test data to rebuild the xgboost to predict the test data.
+ * 4 the document xgboost.total01 contain the test01 result, total.pred01(0.45).csv.
+     the document xgboost.total02 contain the test02 result, total.pred02(0.45).csv.
+ * 5  you can also get the total.pred01(0.5).csv and the total.pred02(0.5).csv
+ 
+ rondomForest Version
+ --------------------
+ * 1 it has the same data exploration and feature engineering;
+ * 2 but i used the average error to get the mtry parameters and see stability of the error in the model to choose the ntree value;
+ * 3 get the important vars to contrast with xgboost;
+ * 4 output the test scores;
+ 
+ Logisitc Version
+ -----------------
+  * 1 it has the same data exploration and feature engineering;
+  * 2 delate the constant vars or the minimal variance one, did't find the strong correlation vars or the multiple collinearity vars;
+  * 3 choose the IV>0.02 vars
+  * 4 build the logistic model
+  * 5 calculate the AUC= 0.782
+  * 6 then stepwise, get the stepwise vars and rebuild the model;
+  * 7 get the new AUC = 0.782
+  * 8 output the predict test scores.
+  * 9 LRpred01.csv is the test01.result; 
+      LRpred01.csv is the test02 result;
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

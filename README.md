@@ -33,15 +33,15 @@
  3) AUC = 0.80
  * 6 predict the test data ,then flag the scores>0.5 to 1
  * 7 Line merge the train and test data , then get the xgboost model result, use it to predict the test data;
- * 8 
- 1) calculate the train_error= 0.014
- 2) KS = 0.56
- 3) AUC = 0.86
+ * 8 calculate the model performance 
+   1) calculate the train_error= 0.014
+   2) KS = 0.56
+   3) AUC = 0.86
  * 9 output the test scores
- * 10 predict the test data ,then flag the scores>0.45 to 1
- 1) calculate the train_error= 0.0138
- 2) KS = 0.74
- 3) AUC = 0.934
+ * 10 predict the test data ,then flag the scores>0.45 to 1,Line merge the train and test data to rebuild the model
+   1) calculate the train_error= 0.0138
+   2) KS = 0.74
+   3) AUC = 0.934
  
  # Supplementary explanation
  * 1 i find DDATE of the test var have exception range :'Feb-05' and 'Jan-05', so the forecast is divided into two predictions: 

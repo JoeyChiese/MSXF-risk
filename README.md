@@ -31,6 +31,8 @@
  1) calculate the train_error=0.018
  2) KS = 0.455
  3) AUC = 0.80
+   output pred01.csv(test01)
+   output pred02.csv(test02)
  * 6 predict the test data ,then flag the scores>0.5 to 1
  * 7 Line merge the train and test data , then get the xgboost model result, use it to predict the test data;
  * 8 calculate the model performance 

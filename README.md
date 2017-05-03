@@ -36,7 +36,31 @@
  1) calculate the train_error, too
  2) KS 
  3) AUC
- * 9 print the test scores
+ * 9 output the test scores
+ 
+ rondomForest Version
+ --------------------
+ * 1 it has the same data exploration and feature engineering;
+ * 2 but i used the average error to get the mtry parameters and see stability of the error in the model to choose the ntree value;
+ * 3 get the important vars to contrast with xgboost;
+ * 4 output the test scores;
+ 
+ Logisitc Version
+ -----------------
+ updating
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  

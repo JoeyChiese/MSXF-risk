@@ -38,6 +38,17 @@
  3) AUC
  * 9 output the test scores
  
+ # Supplementary explanation
+ * 1 i find DDATE of the test var have exception range :'Feb-05' and 'Jan-05', so the forecast is divided into two predictions: 
+ test01 : have the exception range testdata,
+ test02 : have no the exception range testdata;
+ * 2 the document xgboost01 contain the test01 result, the pred01.csv.
+     the document xgboost02 contain the test02 result, the pred02.csv.
+ * 3 i modified the scores threshold to 0.45, when the score >0.45 TARGET=1, then column merge the train and test data to rebuild the xgboost to predict the test data.
+ * 4 the document xgboost.total01 contain the test01 result, total.pred01(0.45).csv.
+     the document xgboost.total02 contain the test02 result, total.pred02(0.45).csv.
+ * 5 also you can get the total.pred01(0.5).csv and the total.pred02(0.5).csv
+ 
  rondomForest Version
  --------------------
  * 1 it has the same data exploration and feature engineering;
@@ -47,7 +58,14 @@
  
  Logisitc Version
  -----------------
- updating
+  * 1 it has the same data exploration and feature engineering;
+  * 2 delate the constant vars or the minimal variance one, did't find the strong correlation vars or the multiple collinearity vars;
+  * 3 choose the IV>0.02 vars
+  * 4 build the logistic model
+  * 5 calculate the AUC= 0.782
+  * 6 then stepwise, get the stepwise vars and rebuild the model;
+  * 7 get the new AUC = 0.782
+  * 8 output the predict test scores.
  
  
  

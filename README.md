@@ -27,16 +27,20 @@
  * 3 to sparse matrix
  * 4 xgboost model
  * 5 model assessment 
- 1) calculate the train_error
- 2) KS 
- 3) AUC
+ 1) calculate the train_error=0.018
+ 2) KS = 0.455
+ 3) AUC = 0.80
  * 6 predict the test data ,then flag the scores>0.5 to 1
  * 7 Line merge the train and test data , then get the xgboost model result, use it to predict the test data;
  * 8 
- 1) calculate the train_error, too
- 2) KS 
- 3) AUC
+ 1) calculate the train_error= 0.014
+ 2) KS = 0.56
+ 3) AUC = 0.86
  * 9 output the test scores
+ * 10 predict the test data ,then flag the scores>0.45 to 1
+ 1) calculate the train_error= 0.0138
+ 2) KS = 0.74
+ 3) AUC = 0.934
  
  # Supplementary explanation
  * 1 i find DDATE of the test var have exception range :'Feb-05' and 'Jan-05', so the forecast is divided into two predictions: 
@@ -47,7 +51,7 @@
  * 3 i modified the scores threshold to 0.45, when the score >0.45 TARGET=1, then column merge the train and test data to rebuild the xgboost to predict the test data.
  * 4 the document xgboost.total01 contain the test01 result, total.pred01(0.45).csv.
      the document xgboost.total02 contain the test02 result, total.pred02(0.45).csv.
- * 5 also you can get the total.pred01(0.5).csv and the total.pred02(0.5).csv
+ * 5  you can also get the total.pred01(0.5).csv and the total.pred02(0.5).csv
  
  rondomForest Version
  --------------------
@@ -66,6 +70,9 @@
   * 6 then stepwise, get the stepwise vars and rebuild the model;
   * 7 get the new AUC = 0.782
   * 8 output the predict test scores.
+  * 9 LRpred01.csv is the test01.result; 
+      LRpred01.csv is the test02 result;
+  
  
  
  

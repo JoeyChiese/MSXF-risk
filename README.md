@@ -73,7 +73,7 @@
   * 5 calculate the AUC= 0.782
   * 6 then stepwise, get the stepwise vars and rebuild the model;
   * 7 get the new AUC = 0.782
-  * 8 output the predict test scores.
+  * 8 output the predict test scores
      1) LRpred01.csv is the test01.result
      2) LRpred02.csv is the test02 result
   

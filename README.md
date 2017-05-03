@@ -15,4 +15,28 @@
   2017-05-02 -9:56
   model summary
   -------------
-  
+ # xgboost version
+ -----------------
+ * 1 Data exploration
+ 1) i found that TARGET row has one NA, so i remove it;
+ 2) the COMPFIELD var has 445 NA ,so i replaced the NA with -1, ohter vars have no NA;
+ * 2 feature engineering
+ 1) there are some different thresholds between train and test, so i make the feature engineering to do it;
+ 2) because the data have be dealt with cleanly, so i don't discretize it;
+ 
+ * 3 to sparse matrix
+ * 4 xgboost model
+ * 5 model assessment 
+ 1) calculate the train_error
+ 2) KS 
+ 3) AUC
+ * 6 predict the test data ,then flag the scores>0.5 to 1
+ * 7 Line merge the train and test data , then get the xgboost model result, use it to predict the test data;
+ * 8 
+ 1) calculate the train_error, too
+ 2) KS 
+ 3) AUC
+ * 9 print the test scores
+ 
+ 
+ 

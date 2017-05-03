@@ -21,7 +21,7 @@
  1) i found that TARGET row has one NA, so i remove it;
  2) the COMPFIELD var has 445 NA ,so i replaced the NA with -1, ohter vars have no NA;
  * 2 feature engineering
- 1) there are some different thresholds between train and test, so i make the feature engineering to do it;
+ 1) there are some different thresholds between train and test, so i made the feature engineering ;
  2) because the data have be dealt with cleanly, so i don't discretize it;
  
  * 3 to sparse matrix

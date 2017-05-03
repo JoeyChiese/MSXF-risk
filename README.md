@@ -66,14 +66,14 @@
  
  Logisitc Version
  -----------------
-  * 1 it has the same data exploration and feature engineering;
-  * 2 delate the constant vars or the minimal variance one, did't find the strong correlation vars or the multiple collinearity vars;
-  * 3 choose the IV>0.02 vars
-  * 4 build the logistic model
-  * 5 calculate the AUC= 0.782
-  * 6 then stepwise, get the stepwise vars and rebuild the model;
-  * 7 get the new AUC = 0.782
-  * 8 output the predict test scores
+* 1 it has the same data exploration and feature engineering;
+* 2 delate the constant vars or the minimal variance one, did't find the strong correlation vars or the multiple collinearity vars;
+* 3 choose the IV>0.02 vars
+* 4 build the logistic model
+* 5 calculate the AUC= 0.782
+* 6 then stepwise, get the stepwise vars and rebuild the model;
+* 7 get the new AUC = 0.782
+* 8 output the predict test scores
      1) LRpred01.csv is the test01.result
      2) LRpred02.csv is the test02 result
   

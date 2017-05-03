@@ -45,8 +45,8 @@
  
  # Supplementary explanation
  * 1 i find DDATE of the test var have exception range :'Feb-05' and 'Jan-05', so the forecast is divided into two predictions: 
- test01 : have the exception range testdata,
- test02 : have no the exception range testdata;
+   1)  test01 : have the exception range testdata,
+   2)  test02 : have no the exception range testdata;
  * 2 the document xgboost01 contain the test01 result, the pred01.csv.
      the document xgboost02 contain the test02 result, the pred02.csv.
  * 3 i modified the scores threshold to 0.45, when the score >0.45 TARGET=1, then column merge the train and test data to rebuild the xgboost to predict the test data.

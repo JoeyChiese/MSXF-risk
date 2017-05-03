@@ -3,6 +3,7 @@
 * EnglishName: Joey.
 * Time: 2 May 2017
 # Abstract  
+
   2017-05-01 -19:28
   model details
   --------------
@@ -70,8 +71,8 @@
   * 6 then stepwise, get the stepwise vars and rebuild the model;
   * 7 get the new AUC = 0.782
   * 8 output the predict test scores.
-  * 9 LRpred01.csv is the test01.result; 
-      LRpred01.csv is the test02 result;
+  * 9 LRpred01.csv is the test01.result
+      LRpred01.csv is the test02 result
   
  
  

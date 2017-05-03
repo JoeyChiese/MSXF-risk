@@ -50,10 +50,12 @@
  * 2 the document xgboost01 contain the test01 result, the pred01.csv.
      the document xgboost02 contain the test02 result, the pred02.csv.
  * 3 i modified the scores threshold to 0.45, when the score >0.45 TARGET=1, then column merge the train and test data to rebuild the xgboost to predict the test data.
- * 4 xgboost.total model
+ * 4 xgboost.total model(0.45)
    1)  the document xgboost.total01 contain the test01 result, total.pred01(0.45).csv.
    2)  the document xgboost.total02 contain the test02 result, total.pred02(0.45).csv.
- * 5  you can also get the total.pred01(0.5).csv and the total.pred02(0.5).csv
+ * 5  gboost.total model(0.5)
+   1)  the total.pred01(0.5).csv (test01)
+   2)  the total.pred02(0.5).csv (test02)
  
  rondomForest Version
  --------------------

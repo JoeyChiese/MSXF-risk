@@ -54,9 +54,9 @@
  * 2 the document description
     1)  the document xgboost01 contain the test01 result, the pred01.csv.
     2)  the document xgboost02 contain the test02 result, the pred02.csv.
-    3)  the document xgboost.total01 contain the test01 result, 
+    3)  the document xgboost.total01 contain the test01 result
          total.pred01(0.45).csv，total.pred01(0.5).csv (test01).
-    4)  the document xgboost.total02 contain the test02 result,
+    4)  the document xgboost.total02 contain the test02 result
          total.pred02(0.45).csv，the total.pred02(0.5).csv (test02).
 
  rondomForest Version

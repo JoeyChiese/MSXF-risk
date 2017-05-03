@@ -37,12 +37,12 @@
    1) calculate the train_error= 0.014
    2) KS = 0.56
    3) AUC = 0.86
- * 9 output the test scores: total.pred01(0.5)
+ * 9 output the test scores: total.pred01(0.5).csv;
  * 10 predict the test data ,then flag the scores>0.45 to 1,Line merge the train and test data to rebuild the model
    1) calculate the train_error= 0.0138
    2) KS = 0.74
    3) AUC = 0.934
- * 11 output the test scores: total.pred01(0.45);
+ * 11 output the test scores: total.pred01(0.45).csv;
   
  # Supplementary explanation
  * 1 i find DDATE of the test var have exception range :'Feb-05' and 'Jan-05', so the forecast is divided into two predictions: 

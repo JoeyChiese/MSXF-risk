@@ -46,7 +46,7 @@
    3) AUC = 0.934
  * 11 output the test scores: total.pred01(0.45).csv;
  * 12 next step :
-    1) CV can optimize the xgboost parameters, the prediction will be better.
+   1) CV can optimize the xgboost parameters, the prediction will be better.
  # Supplementary explanation
  * 1 i find DDATE of the test var have exception range :'Feb-05' and 'Jan-05', so the forecast is divided into two predictions: 
    1)  test01 : have the exception range testdata,
